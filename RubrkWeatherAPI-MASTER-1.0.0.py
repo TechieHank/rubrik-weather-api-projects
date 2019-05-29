@@ -40,14 +40,16 @@ def activate():
 # Take On-Demand Snapshot of VM
     snapshot = rubrik.on_demand_snapshot(vm_name, object_type)
 
-# Manipulate DATE and TIME to get advanced forecast
+# Manipulate DATE and TIME to get advanced forecast. We will call OpenWeatherMap API to tell us what the speed is going to be for the latitude and longitude for the next THREE HOURS of a 24 Hour Forecast
 h = 0
 while h <= 24:
     time = datetime.now() + timedelta(days=1, hours = h)
     now = data.get_weather_at(time)
     speed = now.get_wind()['speed']
-    print (speed)
+    print ("The wind speeds at the given coordinates in the next " + str(h) + "hours will be " + str(speed) + " Miles per Hour")
+    
+# What happens if the wind speeds are greater than a certain threshold    
     if speed >= 2.0000:
-    	print ("EL HURACAN IS COMING!!!!!")
+    	print ("THE HURRICAINE IS COMING!!!!! - RUN ON-DEMAND BACKUP")
         # activate()
     h += 3
