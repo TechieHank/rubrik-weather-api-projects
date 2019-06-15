@@ -46,7 +46,7 @@ while h <= 24:
     time = datetime.now() + timedelta(days=1, hours = h)
     now = data.get_weather_at(time)
     speed = now.get_wind()['speed']
-    print ("The wind speeds at the given coordinates in the next " + str(h) + "hours will be " + str(speed) + " Miles per Hour")
+    print ("Forecasted Winds in the next " + str(h) + " hours will be " + str(speed) + " Miles per Hour")
     
 # What happens if the wind speeds are greater than a certain threshold    
     if speed >= 2.0000:
