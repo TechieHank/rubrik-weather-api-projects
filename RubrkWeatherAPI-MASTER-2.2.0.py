@@ -17,7 +17,7 @@ from datetime import datetime, timedelta
 urllib3.disable_warnings()
 
 # Provide OWM API Key to make weather calls - this is your personal
-owm = pyowm.OWM('4fae3708d6e4bad5332f44176a16df3a')
+owm = pyowm.OWM('openweathermap api token')
 
 # Make the location a variable to be requested at run time
 longitude = input('Please Enter Longitude: ')
@@ -32,17 +32,17 @@ print('Location: ' + location.get_name() + ' - latitude: ' + str(location.get_lo
 def activate():
 
 # Set variables for Rubrik cluster in Gaia Lab - Note: you can set these variables on your BASH shell (Don't need to hardcode here)
-    node_ip = "10.0.2.10"
-    username = "admin"
-    password = "Welcome10!Rubrik"
+    node_ip = "rubrik ip address"
+    username = "rubrik username"
+    password = "rubrik password"
 
 # Establish a connection to the Rubrik cluster
     rubrik = rubrik_cdm.Connect(node_ip, username, password)
     print ("Establishing Connection with Rubrik Cluster...")
 
 # Set Rubrik Object Variables
-    sla = "Gold"
-    object_type = "vmware"
+    sla = "name of SLA - for example: Gold"
+    object_type = "object type - for example: vmware"
     all_vms_in_sla = rubrik.get_sla_objects(sla, object_type)
 
 # Take On-Demand Snapshot of all VM's in a SLA
